@@ -59,7 +59,7 @@ input {
 
       input {
         @include dim(100%, 40%);
-        @include border-direction(bottom, 1px, $black-5);
+        @include border-direction(bottom, 1px, $white-1);
         border-radius: 5px 5px 0 0;
         padding-left: 1rem;
 
@@ -75,7 +75,7 @@ input {
         @include dim(100%, 30%);
 
         font-size: 0.8rem;
-        color: $black-5;
+        color: $white-1;
       }
     }
 
