@@ -1,0 +1,29 @@
+{
+  "name": "parcel_template-javascript",
+  "version": "1.0.0",
+  "description": "",
+  "source": [
+    "src/index.html",
+    "src/about.html",
+    "src/contact.html"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/philipjonlewis/parcel-js-sass.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/philipjonlewis/parcel-js-sass/issues"
+  },
+  "homepage": "https://github.com/philipjonlewis/parcel-js-sass#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.1",
+    "parcel": "^2.0.1"
+  }
+}
