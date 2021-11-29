@@ -1,11 +1,11 @@
 {
-  "name": "parcel_template-javascript",
+  "name": "authentication_forms",
   "version": "1.0.0",
   "description": "",
   "source": [
     "src/index.html",
-    "src/about.html",
-    "src/contact.html"
+    "src/signup.html",
+    "src/login.html"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/philipjonlewis/parcel-js-sass.git"
+    "url": "git+https://github.com/philipjonlewis/Authentication_Forms.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/philipjonlewis/parcel-js-sass/issues"
+    "url": "https://github.com/philipjonlewis/Authentication_Forms/issues"
   },
-  "homepage": "https://github.com/philipjonlewis/parcel-js-sass#readme",
+  "homepage": "https://github.com/philipjonlewis/Authentication_Forms#readme",
   "devDependencies": {
     "@parcel/transformer-sass": "^2.0.1",
     "parcel": "^2.0.1"

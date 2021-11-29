@@ -1,4 +1,85 @@
 @use "./base" as *;
 @use "./colors" as *;
 @use "./abstracts" as *;
+@use "./pages" as *;
 
+input {
+  background-color: transparent;
+}
+
+.form-page {
+  @include dim(100vw, 100vh);
+  @include flexbox(column, center, center);
+
+  background-color: $white-4;
+
+  .form-container {
+    @include dim(32rem, 48rem);
+    @include flexbox(column, center, space-between);
+
+    background-color: $white-5;
+
+    padding: 2rem;
+
+    border-radius: 1rem;
+
+    .form-label-container {
+      width: 100%;
+      padding-bottom: 4rem;
+      margin-bottom: 1rem;
+
+      p {
+        font-size: 2rem;
+        font-weight: bolder;
+      }
+      //   background-color: red;
+    }
+
+    .form-element {
+      //   background-color: yellow;
+      @include dim(100%, 6rem);
+      @include flexbox(column, flex-start, flex-start);
+
+      margin-bottom: 1rem;
+
+      label {
+        @include flexbox(row, flex-start, flex-start);
+        @include dim(100%, 30%);
+
+        font-weight: bold;
+      }
+
+      input {
+        @include dim(100%, 40%);
+        @include border-direction(bottom, 1px, $black-5);
+
+        &:hover,
+        :active,
+        :focus {
+          background-color: $white-4;
+        }
+      }
+
+      .input-info {
+        @include flexbox(row, center, flex-start);
+        @include dim(100%, 30%);
+
+        font-size: 0.8rem;
+        color: $black-5;
+      }
+    }
+
+    .form-button-container {
+      @include dim(100%, 4rem);
+
+      button {
+        background-color: $black-2;
+        color: white;
+        // font-weight: bold;
+        // border-radius: 1rem;
+
+        @include dim-complete;
+      }
+    }
+  }
+}
