@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./sass/style.scss" />
-    <script type="module" src="./js/app.js"></script>
+    <script defer type="module" src="./js/app.js"></script>
     <title>Log In Form</title>
   </head>
   <body>
@@ -28,19 +28,32 @@
           <p class="input-info">Must be a valid email address</p>
         </div>
 
-        <div class="form-element">
+        <div class="form-element password-form-element">
           <label for="password">Password</label>
           <input
             required
+            autocomplete="current-password"
             type="password"
             name="password"
             id="password"
             placeholder="Password Field"
-            pattern="(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,32}$"
+            pattern="(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,32}$"
           />
           <p class="input-info">
-            Must be 8-16 characters container numbers and special characters.
+            Must be 8-16 characters containing at least one number and any of
+            these special characters !@#$%^&*.
           </p>
+
+          <img
+            src="./assets/icons/eye-on.svg"
+            alt=""
+            class="toggle-password show-password"
+          />
+          <img
+            src="./assets/icons/eye-off.svg"
+            alt=""
+            class="toggle-password hide-password"
+          />
         </div>
 
         <div class="form-button-container">

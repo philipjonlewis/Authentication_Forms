@@ -27,10 +27,11 @@
           <p class="input-info">Anything is possible</p>
         </div>
 
-        <div class="form-element">
+        <div class="form-element password-form-element">
           <label for="password">Password</label>
           <input
             required
+            autocomplete="current-password"
             type="password"
             name="password"
             id="password"
@@ -40,12 +41,23 @@
           <p class="input-info">
             Must be 8-16 characters container numbers and special characters.
           </p>
+          <img
+            src="./assets/icons/eye-on.svg"
+            alt=""
+            class="toggle-password show-password"
+          />
+          <img
+            src="./assets/icons/eye-off.svg"
+            alt=""
+            class="toggle-password hide-password"
+          />
         </div>
 
-        <div class="form-element">
+        <div class="form-element password-form-element">
           <label for="passwordConfirmation">Confirm Password</label>
           <input
             required
+            autocomplete="current-password"
             type="password"
             name="passwordConfirmation"
             id="passwordConfirmation"
@@ -55,6 +67,16 @@
           <p class="input-info">
             Must be the same value as the password field above
           </p>
+          <img
+            src="./assets/icons/eye-on.svg"
+            alt=""
+            class="toggle-password show-password"
+          />
+          <img
+            src="./assets/icons/eye-off.svg"
+            alt=""
+            class="toggle-password hide-password"
+          />
         </div>
 
         <div class="form-button-container">

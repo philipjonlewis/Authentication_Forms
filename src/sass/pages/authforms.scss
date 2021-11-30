@@ -45,28 +45,22 @@ input {
     }
 
     .form-element {
-      @include dim(100%, 7rem);
+      @include dim(100%, 8rem);
       @include flexbox(column, flex-start, flex-start);
 
+      // background-color: red;
+
       position: relative;
-      margin-bottom: 1rem;
+      margin-bottom: 2rem;
 
       .toggle-password {
         @include dim(24px, 24px);
 
         position: absolute;
-        top: 30%;
+        top: 35%;
         right: 0.4rem;
 
         cursor: pointer;
-      }
-
-      .show-password {
-        // display: none;
-      }
-
-      .hide-password {
-        // display: none;
       }
 
       label {
