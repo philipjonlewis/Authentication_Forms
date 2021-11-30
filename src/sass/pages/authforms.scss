@@ -63,10 +63,43 @@ input {
         border-radius: 5px 5px 0 0;
         padding-left: 1rem;
 
-        &:hover,
-        :active,
-        :focus {
-          background-color: $white-4;
+        // &:hover,
+        // :active,
+        // :focus {
+        //   background-color: $white-4;
+        // }
+
+        &:hover:invalid,
+        :active:invalid,
+        :focus:invalid {
+          background-color: lighten($apple-red, 39%);
+          @include border-direction(bottom, 1px, $apple-red);
+        }
+
+        &:hover:valid,
+        :active:valid,
+        :focus:valid {
+          background-color: lighten($apple-green, 45%);
+          @include border-direction(bottom, 1px, $apple-green);
+        }
+
+        &:invalid {
+          background-color: lighten($apple-red, 39%);
+          @include border-direction(bottom, 1px, $apple-red);
+        }
+
+        &:valid {
+          background-color: lighten($apple-green, 48%);
+          @include border-direction(bottom, 1px, $apple-green);
+        }
+
+        &:invalid:placeholder-shown {
+          background-color: $white-5;
+          @include border-direction(bottom, 1px, $white-1);
+        }
+
+        &:empty {
+          // background-color: blue;
         }
       }
 
@@ -95,6 +128,11 @@ input {
 
         &:hover {
           background-color: lighten($apple-blue, 10%);
+          box-shadow: none;
+        }
+
+        &:disabled {
+          background-color: $white-3;
           box-shadow: none;
         }
       }
