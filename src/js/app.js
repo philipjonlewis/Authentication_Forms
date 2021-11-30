@@ -75,15 +75,20 @@ const passwordConfirmation = document.getElementById("passwordConfirmation");
 const pwdcLabel = document.getElementById("passwordConfirmation-text");
 
 passwordConfirmation.addEventListener("input", (e) => {
+
   if (e.target.value != password.value && !pwdcLabel.innerHTML.includes("8")) {
+    button.disabled = true;
+    pwdcLabel.style = "color:rgb(255,59,48)";
     pwdcLabel.innerHTML = `${pwdcLabel.innerHTML} but it isnt the same with the field above`;
   } else {
+    pwdcLabel.style = "color:#a0a0a0";
     pwdcLabel.innerHTML = `8-32 characters containing at least one number, one capital letter and any of the following characters !@#$%^&*.`;
   }
 
   if (e.target.value == password.value) {
     pwdcLabel.innerHTML = `wow!`;
   }
+  
 });
 
 // TODO Fix and formalize regex throughout this and the backend
