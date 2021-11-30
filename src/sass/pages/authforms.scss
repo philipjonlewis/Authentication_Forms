@@ -9,6 +9,8 @@ input {
   @include dim(100vw, 100vh);
   @include flexbox(column, center, center);
 
+  // padding-top: 3rem;
+
   font-family: "Noto Sans";
   color: $black-3;
   background-color: #f6fafd;
@@ -16,6 +18,7 @@ input {
 
   .form-container {
     @include box-shadow;
+    border: transparent;
     box-shadow: #7070704d 0 0 15px;
 
     // @include dim(32rem, 48rem);
@@ -39,27 +42,54 @@ input {
         font-weight: 700;
         color: $apple-blue;
       }
-      //   background-color: red;
     }
 
     .form-element {
-      //   background-color: yellow;
-      @include dim(100%, 6rem);
+      @include dim(100%, 7rem);
       @include flexbox(column, flex-start, flex-start);
 
-      margin-bottom: 2rem;
+      position: relative;
+      margin-bottom: 1rem;
+
+      .toggle-password {
+        @include dim(24px, 24px);
+
+        position: absolute;
+        top: 30%;
+        right: 0.4rem;
+
+        cursor: pointer;
+      }
+
+      .show-password {
+        // display: none;
+      }
+
+      .hide-password {
+        // display: none;
+      }
 
       label {
         @include flexbox(row, flex-start, flex-start);
-        @include dim(100%, 30%);
+        @include dim(100%, 25%);
         color: $apple-blue;
 
         font-weight: bold;
       }
 
+      .valid-label {
+        color: $apple-green;
+      }
+
+      .invalid-label {
+        color: $apple-red;
+      }
+
       input {
-        @include dim(100%, 40%);
+        @include dim(100%, 35%);
         @include border-direction(bottom, 1px, $white-1);
+
+        font-size: 0.9rem;
         border-radius: 5px 5px 0 0;
         padding-left: 1rem;
 
@@ -97,15 +127,11 @@ input {
           background-color: $white-5;
           @include border-direction(bottom, 1px, $white-1);
         }
-
-        &:empty {
-          // background-color: blue;
-        }
       }
 
       .input-info {
         @include flexbox(row, center, flex-start);
-        @include dim(100%, 30%);
+        @include dim(100%, 40%);
 
         font-size: 0.8rem;
         color: $white-1;
@@ -123,11 +149,15 @@ input {
         transition: all 0.5s ease;
         // @include box-shadow;
         box-shadow: rgba(0, 0, 0, 0.3) 0 5px 5px;
-        background-color: $apple-blue;
+        background-color: $apple-green;
         color: white;
 
+        font-weight: bold;
+        // text-align: right;
+        // padding-right: 1rem;
+
         &:hover {
-          background-color: lighten($apple-blue, 10%);
+          background-color: lighten($apple-green, 10%);
           box-shadow: none;
         }
 

@@ -9,8 +9,6 @@
     <title>Edit Username Form</title>
   </head>
   <body>
-
-
     <div class="form-page">
       <form class="form-container editusername-form" action="" method="POST">
         <div class="form-label-container">
@@ -20,6 +18,7 @@
         <div class="form-element">
           <label for="newEmail">New Email</label>
           <input
+            required
             type="email"
             name="newEmail"
             id="newEmail"
@@ -34,6 +33,7 @@
         <div class="form-element">
           <label for="password">Password</label>
           <input
+            required
             type="password"
             name="password"
             id="password"
@@ -48,6 +48,7 @@
         <div class="form-element">
           <label for="passwordConfirmation">Confirm Password</label>
           <input
+            required
             type="password"
             name="passwordConfirmation"
             id="passwordConfirmation"
@@ -60,11 +61,9 @@
         </div>
 
         <div class="form-button-container">
-          <button type="submit">Change Username</button>
+          <button disabled type="submit">Change Username</button>
         </div>
       </form>
     </div>
-
-    
   </body>
 </html>
