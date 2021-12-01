@@ -75,7 +75,6 @@ const passwordConfirmation = document.getElementById("passwordConfirmation");
 const pwdcLabel = document.getElementById("passwordConfirmation-text");
 
 passwordConfirmation.addEventListener("input", (e) => {
-
   if (e.target.value != password.value && !pwdcLabel.innerHTML.includes("8")) {
     button.disabled = true;
     pwdcLabel.style = "color:rgb(255,59,48)";
@@ -88,8 +87,9 @@ passwordConfirmation.addEventListener("input", (e) => {
   if (e.target.value == password.value) {
     pwdcLabel.innerHTML = `wow!`;
   }
-  
 });
+
+// ! Only password confirmation checks the value of password but not vice versa so kapag inuna mo itama yung passord after confirmation hindi nawawala yung red text
 
 // TODO Fix and formalize regex throughout this and the backend
 // TODO fix input format suggestions and labeks

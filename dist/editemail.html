@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/index.7778c26e.css">
+    <script src="/index.58d620de.js" defer=""></script>
+    <title>Edit Email Form</title>
+  </head>
+  <body>
+    <div class="form-page">
+      <form class="form-container editemail-form" action="" method="POST">
+        <div class="form-label-container">
+          <p>Edit Email</p>
+        </div>
+
+        <div class="form-element">
+          <label for="newUsername">New Username</label>
+          <input required="" type="email" name="newUsername" id="newUsername" placeholder="johndoe">
+          <p class="input-info">Anything is possible</p>
+        </div>
+
+        <div class="form-element password-form-element">
+          <label for="password">Password</label>
+          <input required="" autocomplete="current-password" type="password" name="password" id="password" placeholder="Password Field" pattern="(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,32}$">
+          <p class="input-info">
+            Must be 8-16 characters container numbers and special characters.
+          </p>
+          <img src="/eye-on.0f621fa6.svg" alt="" class="toggle-password show-password">
+          <img src="/eye-off.213dc9c8.svg" alt="" class="toggle-password hide-password">
+        </div>
+
+        <div class="form-element password-form-element">
+          <label for="passwordConfirmation">Confirm Password</label>
+          <input required="" autocomplete="current-password" type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Password Confirmation Field" pattern="(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,32}$">
+          <p class="input-info">
+            Must be the same value as the password field above
+          </p>
+          <img src="/eye-on.0f621fa6.svg" alt="" class="toggle-password show-password">
+          <img src="/eye-off.213dc9c8.svg" alt="" class="toggle-password hide-password">
+        </div>
+
+        <div class="form-button-container">
+          <button disabled="" type="submit">Change Email</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

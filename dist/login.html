@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/index.7778c26e.css">
+    <script defer="" src="/index.58d620de.js"></script>
+    <title>Log In Form</title>
+  </head>
+  <body>
+    <div class="form-page">
+      <form class="form-container login-form" action="" method="POST">
+        <div class="form-label-container">
+          <p>Log In</p>
+        </div>
+
+        <div class="form-element">
+          <label for="email">Email</label>
+          <input required="" type="email" name="email" id="email" placeholder="johndoe@email.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+          <p class="input-info">Must be a valid email address</p>
+        </div>
+
+        <div class="form-element password-form-element">
+          <label for="password">Password</label>
+          <input required="" autocomplete="current-password" type="password" name="password" id="password" placeholder="Password Field" pattern="(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,32}$">
+          <p class="input-info">
+            Must be 8-16 characters containing at least one number and any of
+            these special characters !@#$%^&*.
+          </p>
+
+          <img src="/eye-on.0f621fa6.svg" alt="" class="toggle-password show-password">
+          <img src="/eye-off.213dc9c8.svg" alt="" class="toggle-password hide-password">
+        </div>
+
+        <div class="form-button-container">
+          <button disabled="" type="submit">Get Started</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
