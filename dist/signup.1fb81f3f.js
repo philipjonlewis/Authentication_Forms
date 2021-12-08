@@ -140,12 +140,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"j2JkV":[function(require,module,exports) {
+})({"2KDQ6":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "4a236f9275d0a351";
-module.bundle.HMR_BUNDLE_ID = "78e780b858d620de";
+module.bundle.HMR_BUNDLE_ID = "5df679701fb81f3f";
 "use strict";
 function _createForOfIteratorHelper(o, allowArrayLike) {
     var it;
@@ -458,89 +458,93 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"5mvL2":[function(require,module,exports) {
-const formTitle = document.querySelector(".form-label-container p");
-const formElement = document.querySelectorAll(".form-element");
-const formButton = document.querySelector(".form-button-container button");
-const formValues = [
-    true,
-    false,
-    true
-];
-const formState = formValues.every((x)=>x == true
-);
-console.log(formState);
-const red = "color:rgb(255,59,48)";
-const green = "color: rgb(52,199,89)";
-const blue = "color:rgb(0,122,255)";
-formElement.forEach((x)=>{
-    const inputLabel = x.children[0];
-    const inputField = x.children[1];
-    const inputText = x.children[2];
-    inputField.addEventListener("input", (e)=>{
-        if (Array.from(inputLabel).every((y)=>y.children[1].validity.valid
-        )) {
-            formTitle.style = green;
-            formButton.disabled = false;
-        } else {
-            formTitle.style = blue;
-            formButton.disabled = true;
-        }
-        if (inputField.type == "email") {
-            if (!e.target.validity.valid) {
-                inputLabel.style = red;
-                inputText.innerHTML = e.target.validationMessage;
-            } else {
-                inputLabel.style = green;
-                inputText.innerHTML = "Email is in the right format";
-            }
-        }
-        if (inputField.id == "password" || inputField.id == "passwordConfirmation") {
-            if (!e.target.validity.valid) {
-                inputLabel.style = red;
-                inputText.innerHTML = `8-32 characters containing at least one number, one capital letter and any of the following characters !@#$%^&*.`;
-            } else {
-                inputLabel.style = green;
-                inputText.innerHTML = "Password is in the right format";
-            }
-        }
-        if (e.target.value.length == 0) inputLabel.style = blue;
-    });
-});
-const passwordForm = document.querySelectorAll(".password-form-element");
-// Toggle show password
-passwordForm.forEach((x)=>{
-    x.children[4].style = "display:none";
-    x.children[3].addEventListener("click", (e)=>{
-        e.target.style = "display:none";
-        x.children[4].style = "display:block";
-        x.children[1].type = "text";
-    });
-    x.children[4].addEventListener("click", (e)=>{
-        e.target.style = "display:none";
-        x.children[3].style = "display:block";
-        x.children[1].type = "password";
-    });
-});
-const password = document.getElementById("password");
-const passwordConfirmation = document.getElementById("passwordConfirmation");
-const pwdcLabel = document.getElementById("passwordConfirmation-text");
-passwordConfirmation.addEventListener("inputField", (e)=>{
-    if (e.target.value != password.value && !pwdcLabel.innerHTML.includes("8")) {
-        formButton.disabled = true;
-        pwdcLabel.style = "color:rgb(255,59,48)";
-        pwdcLabel.innerHTML = `${pwdcLabel.innerHTML} but it isnt the same with the field above`;
+},{}],"9lXyn":[function(require,module,exports) {
+const signupForm = document.getElementById("signup-form");
+const formLabel = document.querySelector(".form-label-container p");
+const emailForm = document.getElementById("email-form-element");
+const passwordForm = document.getElementById("password-form-element");
+const passwordConfirmationForm = document.getElementById("passwordConfirmation-form-element");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const passwordConfirmationInput = document.getElementById("passwordConfirmation");
+const errorContainer = document.getElementById("error-container");
+const submitButton = document.querySelector("button");
+const stateColorRed = "color:rgb(255,59,48)";
+const stateColorGreen = "color: rgb(52,199,89)";
+const stateColorBlue = "color:rgb(0,122,255)";
+const formInputState = {
+    email: false,
+    password: false,
+    passwordConfirmation: false
+};
+const emailStateHandler = (e)=>{
+    if (e.target.validity.valid) {
+        emailForm.children[0].style = "color: rgb(52,199,89)";
+        emailForm.children[2].innerText = "Email is in the correct format";
+        formInputState[e.target.id] = true;
+    } else if (e.target.value.length == 0) {
+        emailForm.children[0].style = "color:rgb(0,122,255)";
+        emailForm.children[2].innerText = "example format : johndoe@email.com";
     } else {
-        pwdcLabel.style = "color:#a0a0a0";
-        pwdcLabel.innerHTML = `8-32 characters containing at least one number, one capital letter and any of the following characters !@#$%^&*.`;
+        emailForm.children[0].style = "color:rgb(255,59,48)";
+        emailForm.children[2].innerText = e.target.validationMessage;
+        formInputState[e.target.id] = false;
     }
-    if (e.target.value == password.value) pwdcLabel.innerHTML = `wow!`;
-}); // ! Only password confirmation checks the value of password but not vice versa so kapag inuna mo itama yung passord after confirmation hindi nawawala yung red text
- // TODO Fix and formalize regex throughout this and the backend
- // TODO fix inputField format suggestions and labeks
- // TODO Add backend logic to remin to change password every malapit na mag expire ang grefresh cookie
- // ! 
+};
+const passwordStateHandler = (e)=>{
+    if (e.target.validity.valid) {
+        passwordForm.children[0].style = "color: rgb(52,199,89)";
+        passwordForm.children[2].innerText = "Password is in the correct format";
+        formInputState[e.target.id] = true;
+    } else if (e.target.value.length == 0) {
+        passwordForm.children[0].style = "color:rgb(0,122,255)";
+        passwordForm.children[2].innerText = "8-32 characters containing at least one number, one capital letter and any of the following characters !@#$%^&*.";
+    } else {
+        passwordForm.children[0].style = "color:rgb(255,59,48)";
+        passwordForm.children[2].innerText = e.target.validationMessage;
+        formInputState[e.target.id] = false;
+    }
+};
+const passwordConfirmationStateHandler = (e)=>{
+    if (e.target.validity.valid) {
+        passwordConfirmationForm.children[0].style = "color: rgb(52,199,89)";
+        passwordConfirmationForm.children[2].innerText = "Password Confirmation is in the correct format";
+        formInputState[e.target.id] = true;
+    } else if (e.target.value.length == 0) {
+        passwordConfirmationForm.children[0].style = "color:rgb(0,122,255)";
+        passwordConfirmationForm.children[2].innerText = "8-32 characters containing at least one number, one capital letter and any of the following characters !@#$%^&*.";
+    } else {
+        passwordConfirmationForm.children[0].style = "color:rgb(255,59,48)";
+        passwordConfirmationForm.children[2].innerText = e.target.validationMessage;
+        formInputState[e.target.id] = false;
+    }
+};
+// Email input listener
+emailInput.addEventListener("input", emailStateHandler);
+// Password input listener
+passwordInput.addEventListener("input", passwordStateHandler);
+// Password Confirmation input listener
+passwordConfirmationInput.addEventListener("input", passwordConfirmationStateHandler);
+// Button event listener
+window.addEventListener("input", (e)=>{
+    const formState = Object.entries(formInputState).flat().filter((x)=>typeof x == "boolean"
+    ).every((y)=>y === true
+    );
+    if (formState && passwordInput.value != passwordConfirmationInput.value) errorContainer.innerText = "Password is not the same with its confirmation";
+    if (formState && passwordInput.value == passwordConfirmationInput.value) {
+        formLabel.style = "color: rgb(52,199,89)";
+        errorContainer.innerText = "";
+        //Button must be enabled and form label must be green
+        submitButton.disabled = false;
+    } else {
+        formLabel.style = "color:rgb(0,122,255)";
+        errorContainer.innerText = "";
+        submitButton.disabled = true;
+    }
+}); // Object.entries(formInputState).forEach((x) => {
+ //   console.log(x);
+ // });
 
-},{}]},["j2JkV","5mvL2"], "5mvL2", "parcelRequiread8c")
+},{}]},["2KDQ6","9lXyn"], "9lXyn", "parcelRequiread8c")
 
-//# sourceMappingURL=index.58d620de.js.map
+//# sourceMappingURL=signup.1fb81f3f.js.map

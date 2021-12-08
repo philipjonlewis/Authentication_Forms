@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./sass/style.scss" />
 
-    <script defer type="module" src="./js/app.js"></script>
+    <script defer type="module" src="./js/signup.js"></script>
     <title>Signup Form</title>
   </head>
   <body>
     <div class="form-page">
-      <form class="form-container signup-form" action="" method="POST">
+      <form class="form-container" id="signup-form" action="" method="POST">
         <div class="form-label-container">
-          <p>Sign Up</p>
+          <p>Sign Up Form</p>
         </div>
 
-        <div class="form-element">
+        <div class="form-element" id="email-form-element">
           <label for="email">Email</label>
           <input
             required
@@ -30,7 +30,7 @@
           <p class="input-info">Must be a valid email address</p>
         </div>
 
-        <div class="form-element password-form-element">
+        <div class="form-element" id="password-form-element">
           <label for="password">Password</label>
           <input
             required
@@ -60,7 +60,7 @@
           />
         </div>
 
-        <div class="form-element password-form-element">
+        <div class="form-element" id="passwordConfirmation-form-element">
           <label for="passwordConfirmation">Confirm Password</label>
           <input
             required
@@ -87,6 +87,7 @@
           />
         </div>
 
+        <p id="error-container"></p>
         <div class="form-button-container">
           <button disabled type="submit">Complete Registration</button>
         </div>

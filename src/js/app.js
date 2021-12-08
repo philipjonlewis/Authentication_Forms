@@ -1,57 +1,62 @@
-const label = document.querySelectorAll(".form-element");
-const button = document.querySelector(".form-button-container button");
 const formTitle = document.querySelector(".form-label-container p");
+const formElement = document.querySelectorAll(".form-element");
+const formButton = document.querySelector(".form-button-container button");
 
-const colors = {
-  red: "color:rgb(255,59,48)",
-  green: "color: rgb(52,199,89)",
-  blue: "color:rgb(0,122,255)",
-};
+const formValues = [true, false, true];
 
-label.forEach((x) => {
-  const el = {
-    label: x.children[0],
-    input: x.children[1],
-    text: x.children[2],
-  };
+const formState = formValues.every((x) => x == true);
+console.log(formState);
 
-  el.input.addEventListener("input", (e) => {
-    if (Array.from(label).every((y) => y.children[1].validity.valid)) {
-      formTitle.style = "color: rgb(52,199,89)";
-      button.disabled = false;
+const red = "color:rgb(255,59,48)";
+const green = "color: rgb(52,199,89)";
+const blue = "color:rgb(0,122,255)";
+
+formElement.forEach((x) => {
+  const inputLabel = x.children[0];
+  const inputField = x.children[1];
+  const inputText = x.children[2];
+
+  inputField.addEventListener("input", (e) => {
+    if (Array.from(inputLabel).every((y) => y.children[1].validity.valid)) {
+      formTitle.style = green;
+      formButton.disabled = false;
     } else {
-      formTitle.style = "color:rgb(0,122,255)";
-      button.disabled = true;
+      formTitle.style = blue;
+      formButton.disabled = true;
     }
 
-    if (el.input.type == "email") {
-      if (!e.path[0].validity.valid) {
-        el.label.style = "color:rgb(255,59,48)";
-        el.text.innerHTML = e.path[0].validationMessage;
+    if (inputField.type == "email") {
+      if (!e.target.validity.valid) {
+        inputLabel.style = red;
+        inputText.innerHTML = e.target.validationMessage;
       } else {
-        el.label.style = "color: rgb(52,199,89)";
-        el.text.innerHTML = "Email is in the right format";
+        inputLabel.style = green;
+        inputText.innerHTML = "Email is in the right format";
       }
     }
 
-    if (el.input.id == "password" || el.input.id == "passwordConfirmation") {
-      if (!e.path[0].validity.valid) {
-        el.label.style = "color:rgb(255,59,48)";
-        el.text.innerHTML = `8-32 characters containing at least one number, one capital letter and any of the following characters !@#$%^&*.`;
+    if (
+      inputField.id == "password" ||
+      inputField.id == "passwordConfirmation"
+    ) {
+      if (!e.target.validity.valid) {
+        inputLabel.style = red;
+        inputText.innerHTML = `8-32 characters containing at least one number, one capital letter and any of the following characters !@#$%^&*.`;
       } else {
-        el.label.style = "color: rgb(52,199,89)";
-        el.text.innerHTML = "Password is in the right format";
+        inputLabel.style = green;
+        inputText.innerHTML = "Password is in the right format";
       }
     }
 
     if (e.target.value.length == 0) {
-      el.label.style = "color:rgb(0,122,255)";
+      inputLabel.style = blue;
     }
   });
 });
 
 const passwordForm = document.querySelectorAll(".password-form-element");
 
+// Toggle show password
 passwordForm.forEach((x) => {
   x.children[4].style = "display:none";
 
@@ -74,9 +79,9 @@ const password = document.getElementById("password");
 const passwordConfirmation = document.getElementById("passwordConfirmation");
 const pwdcLabel = document.getElementById("passwordConfirmation-text");
 
-passwordConfirmation.addEventListener("input", (e) => {
+passwordConfirmation.addEventListener("inputField", (e) => {
   if (e.target.value != password.value && !pwdcLabel.innerHTML.includes("8")) {
-    button.disabled = true;
+    formButton.disabled = true;
     pwdcLabel.style = "color:rgb(255,59,48)";
     pwdcLabel.innerHTML = `${pwdcLabel.innerHTML} but it isnt the same with the field above`;
   } else {
@@ -92,5 +97,8 @@ passwordConfirmation.addEventListener("input", (e) => {
 // ! Only password confirmation checks the value of password but not vice versa so kapag inuna mo itama yung passord after confirmation hindi nawawala yung red text
 
 // TODO Fix and formalize regex throughout this and the backend
-// TODO fix input format suggestions and labeks
+// TODO fix inputField format suggestions and labeks
 // TODO Add backend logic to remin to change password every malapit na mag expire ang grefresh cookie
+
+
+// ! 
