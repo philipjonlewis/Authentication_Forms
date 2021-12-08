@@ -232,7 +232,7 @@ input {
 .form-page .form-container #error-container {
   visibility: hidden;
 }
-.form-page .form-container #error-container .error-message {
+.form-page .form-container #error-container p {
   color: #ff3b30;
   font-weight: bold;
   text-align: center;

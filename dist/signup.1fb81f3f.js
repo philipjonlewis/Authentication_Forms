@@ -474,9 +474,8 @@ const formInputState = {
     password: false,
     passwordConfirmation: false
 };
-const passwordFieldElement = document.querySelectorAll(".password-field-element");
-// Toggle show password
-passwordFieldElement.forEach((x)=>{
+// Toggles show password
+document.querySelectorAll(".password-field-element").forEach((x)=>{
     x.children[4].style = "display:none";
     x.children[3].addEventListener("click", (e)=>{
         e.target.style = "display:none";
@@ -489,6 +488,7 @@ passwordFieldElement.forEach((x)=>{
         x.children[1].type = "password";
     });
 });
+// handles user input
 const emailInputHandler = (field)=>{
     if (field.validity.valid) {
         emailForm.children[0].style = "color: rgb(52,199,89)";
@@ -504,14 +504,17 @@ const emailInputHandler = (field)=>{
         formInputState.email = false;
     }
 };
+// Gets email from local storage and handles input
 if (localStorage.getItem("email").length >= 1) {
     emailInput.value = localStorage.getItem("email");
     emailInputHandler(emailInput);
 }
+// Sets email to local storage and handles input
 const emailStateHandler = (e)=>{
     localStorage.setItem("email", e.target.value);
     emailInputHandler(e.target);
 };
+// Handles password and password confirmation
 const passwordStatehandler = (formInput, message)=>{
     return (e)=>{
         if (e.target.validity.valid) {
@@ -528,6 +531,8 @@ const passwordStatehandler = (formInput, message)=>{
             //   formInput.children[2].innerText = e.target.validationMessage;
             formInputState[e.target.id] = false;
         }
+        if (passwordInput.value !== passwordConfirmationInput.value) errorContainer.style.visibility = "visible";
+        else errorContainer.style.visibility = "hidden";
     };
 };
 // Email input listener
@@ -537,24 +542,17 @@ passwordInput.addEventListener("input", passwordStatehandler(passwordForm, "Pass
 // Password Confirmation input listener
 passwordConfirmationInput.addEventListener("input", passwordStatehandler(passwordConfirmationForm, "Password Confirmation is in the correct format"));
 // Button event listener
-window.addEventListener("input", (e)=>{
-    const formFieldState = Object.entries(formInputState).flat().filter((x)=>typeof x == "boolean"
+signupForm.addEventListener("input", (e)=>{
+    if (Object.entries(formInputState).flat().filter((x)=>typeof x == "boolean"
     ).every((y)=>y === true
-    );
-    if (formFieldState && passwordInput.value == passwordConfirmationInput.value) {
+    ) && passwordInput.value == passwordConfirmationInput.value) {
         formLabel.style = "color: rgb(52,199,89)";
         submitButton.disabled = false;
     } else {
         formLabel.style = "color:rgb(0,122,255)";
         submitButton.disabled = true;
     }
-    if (Object.entries(formInputState).flat().filter((x)=>typeof x == "boolean"
-    ).every((y)=>y === true
-    ) && passwordInput.value != passwordConfirmationInput.value) errorContainer.style.visibility = "visible";
-    else errorContainer.style.visibility = "hidden";
-}); // Object.entries(formInputState).forEach((x) => {
- //   console.log(x);
- // });
+});
 
 },{}]},["2KDQ6","9lXyn"], "9lXyn", "parcelRequiread8c")
 

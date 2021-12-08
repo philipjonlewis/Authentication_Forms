@@ -134,7 +134,7 @@ input {
 
     #error-container {
       visibility: hidden;
-      .error-message {
+      p {
         color: $apple-red;
         font-weight: bold;
         text-align: center;
