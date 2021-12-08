@@ -6,11 +6,10 @@ import {
 } from "./inputHandlers.js";
 
 import {
-  signupForm,
+  loginForm,
   formLabel,
   emailForm,
   passwordForm,
-  passwordConfirmationForm,
   emailInput,
   passwordInput,
   passwordConfirmationInput,
@@ -21,7 +20,6 @@ import {
 const formInputState = {
   email: false,
   password: false,
-  passwordConfirmation: false,
 };
 
 // Toggles show password
@@ -55,27 +53,14 @@ passwordInput.addEventListener(
   })
 );
 
-// Password Confirmation input listener
-passwordConfirmationInput.addEventListener(
-  "input",
-  passwordStatehandler({
-    passwordForm,
-    message: "Password is in the correct format",
-    formInputState,
-    errorContainer,
-    passwordInput,
-    passwordConfirmationInput,
-  })
-);
-
 // Button event listener
-signupForm.addEventListener(
+loginForm.addEventListener(
   "input",
   buttonhandler({
     formInputState,
-    passwordInput,
-    passwordConfirmationInput,
     formLabel,
     submitButton,
+    passwordInput,
+    passwordConfirmationInput,
   })
 );

@@ -134,6 +134,13 @@ input {
 
     #error-container {
       visibility: hidden;
+
+      background-color: lighten($apple-red, 30%);
+      @include dim(100%, 3rem);
+      @include flexbox(column, flex-start, center);
+      @include border-direction(left, 5px, $apple-red);
+      padding-left: 2rem;
+
       p {
         color: $apple-red;
         font-weight: bold;
@@ -143,7 +150,7 @@ input {
 
     .form-button-container {
       @include dim(100%, 3rem);
-      margin-top: 4rem;
+      margin-top: 3rem;
 
       button {
         @include dim-complete;

@@ -140,12 +140,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"2KDQ6":[function(require,module,exports) {
+})({"iPOzF":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "4a236f9275d0a351";
-module.bundle.HMR_BUNDLE_ID = "5df679701fb81f3f";
+module.bundle.HMR_BUNDLE_ID = "d4083430bdf63c8b";
 "use strict";
 function _createForOfIteratorHelper(o, allowArrayLike) {
     var it;
@@ -458,13 +458,12 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"9lXyn":[function(require,module,exports) {
+},{}],"963XC":[function(require,module,exports) {
 var _inputHandlersJs = require("./inputHandlers.js");
 var _domSelectors = require("./domSelectors");
 const formInputState = {
     email: false,
-    password: false,
-    passwordConfirmation: false
+    password: false
 };
 // Toggles show password
 _inputHandlersJs.toggleShowPasswordHandler(document.querySelectorAll(".password-field-element"));
@@ -489,22 +488,13 @@ _domSelectors.passwordInput.addEventListener("input", _inputHandlersJs.passwordS
     passwordInput: _domSelectors.passwordInput,
     passwordConfirmationInput: _domSelectors.passwordConfirmationInput
 }));
-// Password Confirmation input listener
-_domSelectors.passwordConfirmationInput.addEventListener("input", _inputHandlersJs.passwordStatehandler({
-    passwordForm: _domSelectors.passwordForm,
-    message: "Password is in the correct format",
+// Button event listener
+_domSelectors.loginForm.addEventListener("input", _inputHandlersJs.buttonhandler({
     formInputState,
-    errorContainer: _domSelectors.errorContainer,
+    formLabel: _domSelectors.formLabel,
+    submitButton: _domSelectors.submitButton,
     passwordInput: _domSelectors.passwordInput,
     passwordConfirmationInput: _domSelectors.passwordConfirmationInput
-}));
-// Button event listener
-_domSelectors.signupForm.addEventListener("input", _inputHandlersJs.buttonhandler({
-    formInputState,
-    passwordInput: _domSelectors.passwordInput,
-    passwordConfirmationInput: _domSelectors.passwordConfirmationInput,
-    formLabel: _domSelectors.formLabel,
-    submitButton: _domSelectors.submitButton
 }));
 
 },{"./inputHandlers.js":"6S7Hi","./domSelectors":"0N9qW"}],"6S7Hi":[function(require,module,exports) {
@@ -652,6 +642,6 @@ const passwordConfirmationInput = document.getElementById("passwordConfirmation"
 const errorContainer = document.getElementById("error-container");
 const submitButton = document.querySelector("button");
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["2KDQ6","9lXyn"], "9lXyn", "parcelRequiread8c")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["iPOzF","963XC"], "963XC", "parcelRequiread8c")
 
-//# sourceMappingURL=signup.1fb81f3f.js.map
+//# sourceMappingURL=login.bdf63c8b.js.map
