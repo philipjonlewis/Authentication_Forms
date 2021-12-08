@@ -1,5 +1,9 @@
 const signupForm = document.getElementById("signup-form");
 const loginForm = document.getElementById("login-form");
+// const forgotPasswordForm;
+// const editUsernameForm;
+// const editPasswordForm;
+// const editEmailForm;
 
 const formLabel = document.querySelector(".form-label-container p");
 
