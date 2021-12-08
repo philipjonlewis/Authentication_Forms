@@ -132,6 +132,15 @@ input {
       }
     }
 
+    #error-container {
+      visibility: hidden;
+      .error-message {
+        color: $apple-red;
+        font-weight: bold;
+        text-align: center;
+      }
+    }
+
     .form-button-container {
       @include dim(100%, 3rem);
       margin-top: 4rem;

@@ -22,7 +22,7 @@
           <p class="input-info">Must be a valid email address</p>
         </div>
 
-        <div class="form-element" id="password-form-element">
+        <div class="form-element password-field-element" id="password-form-element">
           <label for="password">Password</label>
           <input required="" autocomplete="new-password" type="password" name="password" id="password" placeholder="Password Field" pattern="(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{8,32}$">
           <p class="input-info">
@@ -34,7 +34,7 @@
           <img title="Hide Password" src="/eye-off.213dc9c8.svg" alt="" class="toggle-password hide-password">
         </div>
 
-        <div class="form-element" id="passwordConfirmation-form-element">
+        <div class="form-element password-field-element" id="passwordConfirmation-form-element">
           <label for="passwordConfirmation">Confirm Password</label>
           <input required="" autocomplete="new-password" type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Password Confirmation Field" pattern="(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{8,32}$">
           <p class="input-info" id="passwordConfirmation-text">
@@ -45,7 +45,10 @@
           <img src="/eye-off.213dc9c8.svg" alt="" class="toggle-password hide-password">
         </div>
 
-        <p id="error-container"></p>
+        <div id="error-container">
+          <p class="error-message">password fields do not match</p>
+        </div>
+
         <div class="form-button-container">
           <button disabled="" type="submit">Complete Registration</button>
         </div>

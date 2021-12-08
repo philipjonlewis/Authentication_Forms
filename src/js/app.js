@@ -54,7 +54,7 @@ formElement.forEach((x) => {
   });
 });
 
-const passwordForm = document.querySelectorAll(".password-form-element");
+const passwordForm = document.querySelectorAll(".password-input-element");
 
 // Toggle show password
 passwordForm.forEach((x) => {
@@ -100,5 +100,4 @@ passwordConfirmation.addEventListener("inputField", (e) => {
 // TODO fix inputField format suggestions and labeks
 // TODO Add backend logic to remin to change password every malapit na mag expire ang grefresh cookie
 
-
-// ! 
+// !

@@ -13,12 +13,7 @@ const passwordConfirmationInput = document.getElementById(
   "passwordConfirmation"
 );
 const errorContainer = document.getElementById("error-container");
-
 const submitButton = document.querySelector("button");
-
-const stateColorRed = "color:rgb(255,59,48)";
-const stateColorGreen = "color: rgb(52,199,89)";
-const stateColorBlue = "color:rgb(0,122,255)";
 
 const formInputState = {
   email: false,
@@ -26,86 +21,117 @@ const formInputState = {
   passwordConfirmation: false,
 };
 
-const emailStateHandler = (e) => {
-  if (e.target.validity.valid) {
+const passwordFieldElement = document.querySelectorAll(
+  ".password-field-element"
+);
+
+// Toggle show password
+passwordFieldElement.forEach((x) => {
+  x.children[4].style = "display:none";
+  x.children[3].addEventListener("click", (e) => {
+    e.target.style = "display:none";
+    x.children[4].style = "display:block";
+    x.children[1].type = "text";
+  });
+  x.children[4].addEventListener("click", (e) => {
+    e.target.style = "display:none";
+    x.children[3].style = "display:block";
+    x.children[1].type = "password";
+  });
+});
+
+const emailInputHandler = (field) => {
+  if (field.validity.valid) {
     emailForm.children[0].style = "color: rgb(52,199,89)";
     emailForm.children[2].innerText = "Email is in the correct format";
-    formInputState[e.target.id] = true;
-  } else if (e.target.value.length == 0) {
+    formInputState.email = true;
+  } else if (field.value.length == 0) {
     emailForm.children[0].style = "color:rgb(0,122,255)";
     emailForm.children[2].innerText = "example format : johndoe@email.com";
+    formInputState.email = false;
   } else {
     emailForm.children[0].style = "color:rgb(255,59,48)";
-    emailForm.children[2].innerText = e.target.validationMessage;
-    formInputState[e.target.id] = false;
+    emailForm.children[2].innerText = field.validationMessage;
+    formInputState.email = false;
   }
 };
 
-const passwordStateHandler = (e) => {
-  if (e.target.validity.valid) {
-    passwordForm.children[0].style = "color: rgb(52,199,89)";
-    passwordForm.children[2].innerText = "Password is in the correct format";
-    formInputState[e.target.id] = true;
-  } else if (e.target.value.length == 0) {
-    passwordForm.children[0].style = "color:rgb(0,122,255)";
-    passwordForm.children[2].innerText =
-      "8-32 characters containing at least one number, one capital letter and any of the following characters !@#$%^&*.";
-  } else {
-    passwordForm.children[0].style = "color:rgb(255,59,48)";
-    passwordForm.children[2].innerText = e.target.validationMessage;
-    formInputState[e.target.id] = false;
-  }
+if (localStorage.getItem("email").length >= 1) {
+  emailInput.value = localStorage.getItem("email");
+  emailInputHandler(emailInput);
+}
+
+const emailStateHandler = (e) => {
+  localStorage.setItem("email", e.target.value);
+  emailInputHandler(e.target);
 };
 
-const passwordConfirmationStateHandler = (e) => {
-  if (e.target.validity.valid) {
-    passwordConfirmationForm.children[0].style = "color: rgb(52,199,89)";
-    passwordConfirmationForm.children[2].innerText =
-      "Password Confirmation is in the correct format";
-    formInputState[e.target.id] = true;
-  } else if (e.target.value.length == 0) {
-    passwordConfirmationForm.children[0].style = "color:rgb(0,122,255)";
-    passwordConfirmationForm.children[2].innerText =
-      "8-32 characters containing at least one number, one capital letter and any of the following characters !@#$%^&*.";
-  } else {
-    passwordConfirmationForm.children[0].style = "color:rgb(255,59,48)";
-    passwordConfirmationForm.children[2].innerText = e.target.validationMessage;
-    formInputState[e.target.id] = false;
-  }
+const passwordStatehandler = (formInput, message) => {
+  return (e) => {
+    if (e.target.validity.valid) {
+      formInput.children[0].style = "color: rgb(52,199,89)";
+      formInput.children[2].innerText = message;
+      formInputState[e.target.id] = true;
+    } else if (e.target.value.length == 0) {
+      formInput.children[0].style = "color:rgb(0,122,255)";
+      formInput.children[2].innerText =
+        "Must be 8-32 characters containing at least one number, one capital letter and any of the following characters !@#$%^&*.";
+      formInputState[e.target.id] = false;
+    } else {
+      formInput.children[0].style = "color:rgb(255,59,48)";
+      formInput.children[2].innerText =
+        "Must be 8-32 characters containing at least one number, one capital letter and any of the following characters !@#$%^&*.";
+      //   formInput.children[2].innerText = e.target.validationMessage;
+      formInputState[e.target.id] = false;
+    }
+  };
 };
 
 // Email input listener
 emailInput.addEventListener("input", emailStateHandler);
 
 // Password input listener
-passwordInput.addEventListener("input", passwordStateHandler);
+passwordInput.addEventListener(
+  "input",
+  passwordStatehandler(passwordForm, "Password is in the correct format")
+);
 
 // Password Confirmation input listener
 passwordConfirmationInput.addEventListener(
   "input",
-  passwordConfirmationStateHandler
+  passwordStatehandler(
+    passwordConfirmationForm,
+    "Password Confirmation is in the correct format"
+  )
 );
 
 // Button event listener
 window.addEventListener("input", (e) => {
-  const formState = Object.entries(formInputState)
+  const formFieldState = Object.entries(formInputState)
     .flat()
     .filter((x) => typeof x == "boolean")
     .every((y) => y === true);
-
-  if (formState && passwordInput.value != passwordConfirmationInput.value) {
-    errorContainer.innerText = "Password is not the same with its confirmation";
-  }
-
-  if (formState && passwordInput.value == passwordConfirmationInput.value) {
+  if (
+    formFieldState &&
+    passwordInput.value == passwordConfirmationInput.value
+  ) {
     formLabel.style = "color: rgb(52,199,89)";
-    errorContainer.innerText = "";
-    //Button must be enabled and form label must be green
     submitButton.disabled = false;
   } else {
     formLabel.style = "color:rgb(0,122,255)";
-    errorContainer.innerText = "";
     submitButton.disabled = true;
+  }
+
+  if (
+    Object.entries(formInputState)
+      .flat()
+      .filter((x) => typeof x == "boolean")
+      .every((y) => y === true) &&
+    passwordInput.value != passwordConfirmationInput.value
+  ) {
+    errorContainer.style.visibility = "visible";
+  } else {
+    errorContainer.style.visibility = "hidden";
   }
 });
 

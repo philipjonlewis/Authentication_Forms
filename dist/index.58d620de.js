@@ -507,7 +507,7 @@ formElement.forEach((x)=>{
         if (e.target.value.length == 0) inputLabel.style = blue;
     });
 });
-const passwordForm = document.querySelectorAll(".password-form-element");
+const passwordForm = document.querySelectorAll(".password-input-element");
 // Toggle show password
 passwordForm.forEach((x)=>{
     x.children[4].style = "display:none";
@@ -539,7 +539,7 @@ passwordConfirmation.addEventListener("inputField", (e)=>{
  // TODO Fix and formalize regex throughout this and the backend
  // TODO fix inputField format suggestions and labeks
  // TODO Add backend logic to remin to change password every malapit na mag expire ang grefresh cookie
- // ! 
+ // !
 
 },{}]},["j2JkV","5mvL2"], "5mvL2", "parcelRequiread8c")
 

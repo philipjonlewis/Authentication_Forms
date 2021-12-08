@@ -229,6 +229,14 @@ input {
   font-size: 0.8rem;
   color: #a0a0a0;
 }
+.form-page .form-container #error-container {
+  visibility: hidden;
+}
+.form-page .form-container #error-container .error-message {
+  color: #ff3b30;
+  font-weight: bold;
+  text-align: center;
+}
 .form-page .form-container .form-button-container {
   width: 100%;
   height: 3rem;
