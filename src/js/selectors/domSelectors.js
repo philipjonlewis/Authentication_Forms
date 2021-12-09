@@ -1,16 +1,22 @@
 const signupForm = document.getElementById("signup-form");
 const loginForm = document.getElementById("login-form");
 const forgotPasswordForm = document.getElementById("forgot-password-form");
-// const forgotPasswordForm;
+
 const editUsernameForm = document.getElementById("edit-username-form");
-// const editPasswordForm;
+
 const editEmailForm = document.getElementById("edit-email-form");
+
+const editPasswordForm = document.getElementById("edit-password-form");
 
 const formLabel = document.querySelector(".form-label-container p");
 
 const emailForm = document.getElementById("email-form-element");
 
 const usernameForm = document.getElementById("username-form-element");
+
+const currentPasswordForm = document.getElementById(
+  "current-password-form-element"
+);
 
 const passwordForm = document.getElementById("password-form-element");
 
@@ -21,6 +27,8 @@ const passwordConfirmationForm = document.getElementById(
 const emailInput = document.getElementById("email");
 
 const usernameInput = document.getElementById("username");
+
+const currentPasswordInput = document.getElementById("currentPassword");
 
 const passwordInput = document.getElementById("password");
 
@@ -36,6 +44,8 @@ export {
   loginForm,
   forgotPasswordForm,
   editUsernameForm,
+  editPasswordForm,
+  currentPasswordForm,
   usernameForm,
   editEmailForm,
   formLabel,
@@ -43,6 +53,7 @@ export {
   passwordForm,
   passwordConfirmationForm,
   emailInput,
+  currentPasswordInput,
   usernameInput,
   passwordInput,
   passwordConfirmationInput,

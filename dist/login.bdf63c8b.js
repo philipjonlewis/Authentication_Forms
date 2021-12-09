@@ -632,6 +632,10 @@ parcelHelpers.export(exports, "forgotPasswordForm", ()=>forgotPasswordForm
 );
 parcelHelpers.export(exports, "editUsernameForm", ()=>editUsernameForm
 );
+parcelHelpers.export(exports, "editPasswordForm", ()=>editPasswordForm
+);
+parcelHelpers.export(exports, "currentPasswordForm", ()=>currentPasswordForm
+);
 parcelHelpers.export(exports, "usernameForm", ()=>usernameForm
 );
 parcelHelpers.export(exports, "editEmailForm", ()=>editEmailForm
@@ -646,6 +650,8 @@ parcelHelpers.export(exports, "passwordConfirmationForm", ()=>passwordConfirmati
 );
 parcelHelpers.export(exports, "emailInput", ()=>emailInput
 );
+parcelHelpers.export(exports, "currentPasswordInput", ()=>currentPasswordInput
+);
 parcelHelpers.export(exports, "usernameInput", ()=>usernameInput
 );
 parcelHelpers.export(exports, "passwordInput", ()=>passwordInput
@@ -659,17 +665,18 @@ parcelHelpers.export(exports, "submitButton", ()=>submitButton
 const signupForm = document.getElementById("signup-form");
 const loginForm = document.getElementById("login-form");
 const forgotPasswordForm = document.getElementById("forgot-password-form");
-// const forgotPasswordForm;
 const editUsernameForm = document.getElementById("edit-username-form");
-// const editPasswordForm;
 const editEmailForm = document.getElementById("edit-email-form");
+const editPasswordForm = document.getElementById("edit-password-form");
 const formLabel = document.querySelector(".form-label-container p");
 const emailForm = document.getElementById("email-form-element");
 const usernameForm = document.getElementById("username-form-element");
+const currentPasswordForm = document.getElementById("current-password-form-element");
 const passwordForm = document.getElementById("password-form-element");
 const passwordConfirmationForm = document.getElementById("passwordConfirmation-form-element");
 const emailInput = document.getElementById("email");
 const usernameInput = document.getElementById("username");
+const currentPasswordInput = document.getElementById("currentPassword");
 const passwordInput = document.getElementById("password");
 const passwordConfirmationInput = document.getElementById("passwordConfirmation");
 const errorContainer = document.getElementById("error-container");

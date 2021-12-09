@@ -140,12 +140,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"5kY4l":[function(require,module,exports) {
+})({"kP1nh":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "4a236f9275d0a351";
-module.bundle.HMR_BUNDLE_ID = "bd378a7c3b11dcf5";
+module.bundle.HMR_BUNDLE_ID = "d00a3f9cb470e37f";
 "use strict";
 function _createForOfIteratorHelper(o, allowArrayLike) {
     var it;
@@ -458,32 +458,25 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"346Db":[function(require,module,exports) {
-var _usernameHandlerJs = require("./handlers/usernameHandler.js");
+},{}],"lLMdC":[function(require,module,exports) {
 var _passwordHandlerJs = require("./handlers/passwordHandler.js");
 var _toggleShowPasswordHandler = require("./handlers/toggleShowPasswordHandler");
 var _passwordConfirmationHandlerJs = require("./handlers/passwordConfirmationHandler.js");
 var _buttonHandlerJs = require("./handlers/buttonHandler.js");
 var _domSelectorsJs = require("./selectors/domSelectors.js");
 const formInputState = {
-    username: false,
+    previousPassword: false,
     password: false,
     passwordConfirmation: false
 };
 // Toggles show password
 _toggleShowPasswordHandler.toggleShowPasswordHandler(document.querySelectorAll(".password-field-element"));
-// Gets email from local storage and handles input
-if (localStorage.getItem("username") && localStorage.getItem("username").length >= 1) {
-    _domSelectorsJs.usernameInput.value = localStorage.getItem("username");
-    _usernameHandlerJs.usernameInputHandler(_domSelectorsJs.usernameInput, _domSelectorsJs.usernameForm, formInputState);
-}
-// Sets email to local storage and handles input
-const usernameStateHandler = (e)=>{
-    localStorage.setItem("username", e.target.value);
-    _usernameHandlerJs.usernameInputHandler(e.target, _domSelectorsJs.usernameForm, formInputState);
-};
-// username input listener
-_domSelectorsJs.usernameInput.addEventListener("input", usernameStateHandler);
+// Current input listener
+_domSelectorsJs.currentPasswordInput.addEventListener("input", _passwordHandlerJs.passwordStatehandler({
+    form: _domSelectorsJs.currentPasswordForm,
+    message: "Password is in the correct format",
+    formInputState
+}));
 // Password input listener
 _domSelectorsJs.passwordInput.addEventListener("input", _passwordHandlerJs.passwordStatehandler({
     form: _domSelectorsJs.passwordForm,
@@ -499,7 +492,7 @@ _domSelectorsJs.passwordConfirmationInput.addEventListener("input", _passwordHan
     callback: _passwordConfirmationHandlerJs.passwordConfirmationHandler(_domSelectorsJs.passwordInput, _domSelectorsJs.passwordConfirmationInput, _domSelectorsJs.errorContainer)
 }));
 // Button event listener
-_domSelectorsJs.editUsernameForm.addEventListener("input", _buttonHandlerJs.buttonHandler({
+_domSelectorsJs.editPasswordForm.addEventListener("input", _buttonHandlerJs.buttonHandler({
     formInputState,
     formLabel: _domSelectorsJs.formLabel,
     submitButton: _domSelectorsJs.submitButton,
@@ -507,25 +500,29 @@ _domSelectorsJs.editUsernameForm.addEventListener("input", _buttonHandlerJs.butt
     passwordConfirmationInput: _domSelectorsJs.passwordConfirmationInput
 }));
 
-},{"./handlers/usernameHandler.js":"lXRza","./handlers/passwordHandler.js":"hE5fk","./handlers/toggleShowPasswordHandler":"Sz8RH","./handlers/passwordConfirmationHandler.js":"ktRcw","./handlers/buttonHandler.js":"3odHj","./selectors/domSelectors.js":"5UQ20"}],"lXRza":[function(require,module,exports) {
+},{"./handlers/passwordHandler.js":"hE5fk","./handlers/toggleShowPasswordHandler":"Sz8RH","./handlers/passwordConfirmationHandler.js":"ktRcw","./handlers/buttonHandler.js":"3odHj","./selectors/domSelectors.js":"5UQ20"}],"hE5fk":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "usernameInputHandler", ()=>usernameInputHandler
+parcelHelpers.export(exports, "passwordStatehandler", ()=>passwordStatehandler
 );
-const usernameInputHandler = (field, usernameForm, formInputState)=>{
-    if (field.value.length >= 8 && field.value.length <= 16) {
-        usernameForm.children[0].style = "color: rgb(52,199,89)";
-        usernameForm.children[2].innerText = "Username is in the correct format";
-        formInputState.username = true;
-    } else if (field.value.length == 0) {
-        usernameForm.children[0].style = "color:rgb(0,122,255)";
-        usernameForm.children[2].innerText = "example format : johndoe@email.com";
-        formInputState.username = false;
-    } else {
-        usernameForm.children[0].style = "color:rgb(255,59,48)";
-        usernameForm.children[2].innerText = field.validationMessage;
-        formInputState.username = false;
-    }
+const passwordStatehandler = (args)=>{
+    const { form , message , formInputState , callback  } = args;
+    return (e)=>{
+        if (e.target.validity.valid) {
+            form.children[0].style = "color: rgb(52,199,89)";
+            form.children[2].innerText = message;
+            formInputState[e.target.id] = true;
+        } else if (e.target.value.length == 0) {
+            form.children[0].style = "color:rgb(0,122,255)";
+            form.children[2].innerText = "Must be 8-32 characters containing at least one number, one capital letter and any of the following characters !@#$%^&*.";
+            formInputState[e.target.id] = false;
+        } else {
+            form.children[0].style = "color:rgb(255,59,48)";
+            form.children[2].innerText = "Must be 8-32 characters containing at least one number, one capital letter and any of the following characters !@#$%^&*.";
+            formInputState[e.target.id] = false;
+        }
+        if (callback) callback();
+    };
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"ciiiV":[function(require,module,exports) {
@@ -558,32 +555,7 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"hE5fk":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "passwordStatehandler", ()=>passwordStatehandler
-);
-const passwordStatehandler = (args)=>{
-    const { form , message , formInputState , callback  } = args;
-    return (e)=>{
-        if (e.target.validity.valid) {
-            form.children[0].style = "color: rgb(52,199,89)";
-            form.children[2].innerText = message;
-            formInputState[e.target.id] = true;
-        } else if (e.target.value.length == 0) {
-            form.children[0].style = "color:rgb(0,122,255)";
-            form.children[2].innerText = "Must be 8-32 characters containing at least one number, one capital letter and any of the following characters !@#$%^&*.";
-            formInputState[e.target.id] = false;
-        } else {
-            form.children[0].style = "color:rgb(255,59,48)";
-            form.children[2].innerText = "Must be 8-32 characters containing at least one number, one capital letter and any of the following characters !@#$%^&*.";
-            formInputState[e.target.id] = false;
-        }
-        if (callback) callback();
-    };
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"Sz8RH":[function(require,module,exports) {
+},{}],"Sz8RH":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "toggleShowPasswordHandler", ()=>toggleShowPasswordHandler
@@ -706,6 +678,6 @@ const passwordConfirmationInput = document.getElementById("passwordConfirmation"
 const errorContainer = document.getElementById("error-container");
 const submitButton = document.querySelector("button");
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["5kY4l","346Db"], "346Db", "parcelRequiread8c")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["kP1nh","lLMdC"], "lLMdC", "parcelRequiread8c")
 
-//# sourceMappingURL=editusername.3b11dcf5.js.map
+//# sourceMappingURL=editpassword.b470e37f.js.map
