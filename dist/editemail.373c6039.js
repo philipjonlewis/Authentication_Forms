@@ -140,12 +140,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"2KDQ6":[function(require,module,exports) {
+})({"7Abrp":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "4a236f9275d0a351";
-module.bundle.HMR_BUNDLE_ID = "5df679701fb81f3f";
+module.bundle.HMR_BUNDLE_ID = "c31c46d5373c6039";
 "use strict";
 function _createForOfIteratorHelper(o, allowArrayLike) {
     var it;
@@ -458,7 +458,7 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"9lXyn":[function(require,module,exports) {
+},{}],"gpQHD":[function(require,module,exports) {
 var _emailhandlerJs = require("./handlers/emailhandler.js");
 var _passwordHandlerJs = require("./handlers/passwordHandler.js");
 var _toggleShowPasswordHandler = require("./handlers/toggleShowPasswordHandler");
@@ -499,7 +499,7 @@ _domSelectorsJs.passwordConfirmationInput.addEventListener("input", _passwordHan
     callback: _passwordConfirmationHandlerJs.passwordConfirmationHandler(_domSelectorsJs.passwordInput, _domSelectorsJs.passwordConfirmationInput, _domSelectorsJs.errorContainer)
 }));
 // Button event listener
-_domSelectorsJs.signupForm.addEventListener("input", _buttonHandlerJs.buttonHandler({
+_domSelectorsJs.editEmailForm.addEventListener("input", _buttonHandlerJs.buttonHandler({
     formInputState,
     formLabel: _domSelectorsJs.formLabel,
     submitButton: _domSelectorsJs.submitButton,
@@ -507,7 +507,7 @@ _domSelectorsJs.signupForm.addEventListener("input", _buttonHandlerJs.buttonHand
     passwordConfirmationInput: _domSelectorsJs.passwordConfirmationInput
 }));
 
-},{"./handlers/emailhandler.js":"2QacT","./handlers/passwordHandler.js":"hE5fk","./selectors/domSelectors.js":"5UQ20","./handlers/toggleShowPasswordHandler":"Sz8RH","./handlers/passwordConfirmationHandler.js":"ktRcw","./handlers/buttonHandler.js":"3odHj"}],"2QacT":[function(require,module,exports) {
+},{"./handlers/emailhandler.js":"2QacT","./handlers/passwordHandler.js":"hE5fk","./handlers/toggleShowPasswordHandler":"Sz8RH","./handlers/passwordConfirmationHandler.js":"ktRcw","./handlers/buttonHandler.js":"3odHj","./selectors/domSelectors.js":"5UQ20"}],"2QacT":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "emailInputHandler", ()=>emailInputHandler
@@ -583,60 +583,6 @@ const passwordStatehandler = (args)=>{
     };
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"5UQ20":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "signupForm", ()=>signupForm
-);
-parcelHelpers.export(exports, "loginForm", ()=>loginForm
-);
-parcelHelpers.export(exports, "forgotPasswordForm", ()=>forgotPasswordForm
-);
-parcelHelpers.export(exports, "editUsernameForm", ()=>editUsernameForm
-);
-parcelHelpers.export(exports, "usernameForm", ()=>usernameForm
-);
-parcelHelpers.export(exports, "editEmailForm", ()=>editEmailForm
-);
-parcelHelpers.export(exports, "formLabel", ()=>formLabel
-);
-parcelHelpers.export(exports, "emailForm", ()=>emailForm
-);
-parcelHelpers.export(exports, "passwordForm", ()=>passwordForm
-);
-parcelHelpers.export(exports, "passwordConfirmationForm", ()=>passwordConfirmationForm
-);
-parcelHelpers.export(exports, "emailInput", ()=>emailInput
-);
-parcelHelpers.export(exports, "usernameInput", ()=>usernameInput
-);
-parcelHelpers.export(exports, "passwordInput", ()=>passwordInput
-);
-parcelHelpers.export(exports, "passwordConfirmationInput", ()=>passwordConfirmationInput
-);
-parcelHelpers.export(exports, "errorContainer", ()=>errorContainer
-);
-parcelHelpers.export(exports, "submitButton", ()=>submitButton
-);
-const signupForm = document.getElementById("signup-form");
-const loginForm = document.getElementById("login-form");
-const forgotPasswordForm = document.getElementById("forgot-password-form");
-// const forgotPasswordForm;
-const editUsernameForm = document.getElementById("edit-username-form");
-// const editPasswordForm;
-const editEmailForm = document.getElementById("edit-email-form");
-const formLabel = document.querySelector(".form-label-container p");
-const emailForm = document.getElementById("email-form-element");
-const usernameForm = document.getElementById("username-form-element");
-const passwordForm = document.getElementById("password-form-element");
-const passwordConfirmationForm = document.getElementById("passwordConfirmation-form-element");
-const emailInput = document.getElementById("email");
-const usernameInput = document.getElementById("username");
-const passwordInput = document.getElementById("password");
-const passwordConfirmationInput = document.getElementById("passwordConfirmation");
-const errorContainer = document.getElementById("error-container");
-const submitButton = document.querySelector("button");
-
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"Sz8RH":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -699,6 +645,60 @@ const buttonHandler = (args)=>{
     };
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["2KDQ6","9lXyn"], "9lXyn", "parcelRequiread8c")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"5UQ20":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "signupForm", ()=>signupForm
+);
+parcelHelpers.export(exports, "loginForm", ()=>loginForm
+);
+parcelHelpers.export(exports, "forgotPasswordForm", ()=>forgotPasswordForm
+);
+parcelHelpers.export(exports, "editUsernameForm", ()=>editUsernameForm
+);
+parcelHelpers.export(exports, "usernameForm", ()=>usernameForm
+);
+parcelHelpers.export(exports, "editEmailForm", ()=>editEmailForm
+);
+parcelHelpers.export(exports, "formLabel", ()=>formLabel
+);
+parcelHelpers.export(exports, "emailForm", ()=>emailForm
+);
+parcelHelpers.export(exports, "passwordForm", ()=>passwordForm
+);
+parcelHelpers.export(exports, "passwordConfirmationForm", ()=>passwordConfirmationForm
+);
+parcelHelpers.export(exports, "emailInput", ()=>emailInput
+);
+parcelHelpers.export(exports, "usernameInput", ()=>usernameInput
+);
+parcelHelpers.export(exports, "passwordInput", ()=>passwordInput
+);
+parcelHelpers.export(exports, "passwordConfirmationInput", ()=>passwordConfirmationInput
+);
+parcelHelpers.export(exports, "errorContainer", ()=>errorContainer
+);
+parcelHelpers.export(exports, "submitButton", ()=>submitButton
+);
+const signupForm = document.getElementById("signup-form");
+const loginForm = document.getElementById("login-form");
+const forgotPasswordForm = document.getElementById("forgot-password-form");
+// const forgotPasswordForm;
+const editUsernameForm = document.getElementById("edit-username-form");
+// const editPasswordForm;
+const editEmailForm = document.getElementById("edit-email-form");
+const formLabel = document.querySelector(".form-label-container p");
+const emailForm = document.getElementById("email-form-element");
+const usernameForm = document.getElementById("username-form-element");
+const passwordForm = document.getElementById("password-form-element");
+const passwordConfirmationForm = document.getElementById("passwordConfirmation-form-element");
+const emailInput = document.getElementById("email");
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+const passwordConfirmationInput = document.getElementById("passwordConfirmation");
+const errorContainer = document.getElementById("error-container");
+const submitButton = document.querySelector("button");
 
-//# sourceMappingURL=signup.1fb81f3f.js.map
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["7Abrp","gpQHD"], "gpQHD", "parcelRequiread8c")
+
+//# sourceMappingURL=editemail.373c6039.js.map

@@ -1,24 +1,29 @@
 import { emailInputHandler } from "./handlers/emailhandler.js";
-
 import { passwordStatehandler } from "./handlers/passwordHandler.js";
 
 import { toggleShowPasswordHandler } from "./handlers/toggleShowPasswordHandler";
 
+import { passwordConfirmationHandler } from "./handlers/passwordConfirmationHandler.js";
+
 import { buttonHandler } from "./handlers/buttonHandler.js";
 
 import {
-  loginForm,
+  editEmailForm,
   formLabel,
   emailForm,
   passwordForm,
+  passwordConfirmationForm,
   emailInput,
   passwordInput,
+  passwordConfirmationInput,
+  errorContainer,
   submitButton,
 } from "./selectors/domSelectors.js";
 
 const formInputState = {
   email: false,
   password: false,
+  passwordConfirmation: false,
 };
 
 // Toggles show password
@@ -46,15 +51,37 @@ passwordInput.addEventListener(
     form: passwordForm,
     message: "Password is in the correct format",
     formInputState,
+    callback: passwordConfirmationHandler(
+      passwordInput,
+      passwordConfirmationInput,
+      errorContainer
+    ),
+  })
+);
+
+// Password Confirmation input listener
+passwordConfirmationInput.addEventListener(
+  "input",
+  passwordStatehandler({
+    form: passwordConfirmationForm,
+    message: "Password is in the correct format",
+    formInputState,
+    callback: passwordConfirmationHandler(
+      passwordInput,
+      passwordConfirmationInput,
+      errorContainer
+    ),
   })
 );
 
 // Button event listener
-loginForm.addEventListener(
+editEmailForm.addEventListener(
   "input",
   buttonHandler({
     formInputState,
     formLabel,
     submitButton,
+    passwordInput,
+    passwordConfirmationInput,
   })
 );

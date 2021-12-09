@@ -1,28 +1,18 @@
 import { emailInputHandler } from "./handlers/emailhandler.js";
 
-import { passwordStatehandler } from "./handlers/passwordHandler.js";
-
-import { toggleShowPasswordHandler } from "./handlers/toggleShowPasswordHandler";
-
 import { buttonHandler } from "./handlers/buttonHandler.js";
 
 import {
-  loginForm,
+  forgotPasswordForm,
   formLabel,
   emailForm,
-  passwordForm,
   emailInput,
-  passwordInput,
   submitButton,
 } from "./selectors/domSelectors.js";
 
 const formInputState = {
   email: false,
-  password: false,
 };
-
-// Toggles show password
-toggleShowPasswordHandler(document.querySelectorAll(".password-field-element"));
 
 // Gets email from local storage and handles input
 if (localStorage.getItem("email").length >= 1) {
@@ -39,18 +29,8 @@ const emailStateHandler = (e) => {
 // Email input listener
 emailInput.addEventListener("input", emailStateHandler);
 
-// Password input listener
-passwordInput.addEventListener(
-  "input",
-  passwordStatehandler({
-    form: passwordForm,
-    message: "Password is in the correct format",
-    formInputState,
-  })
-);
-
 // Button event listener
-loginForm.addEventListener(
+forgotPasswordForm.addEventListener(
   "input",
   buttonHandler({
     formInputState,

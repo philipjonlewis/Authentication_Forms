@@ -628,6 +628,14 @@ parcelHelpers.export(exports, "signupForm", ()=>signupForm
 );
 parcelHelpers.export(exports, "loginForm", ()=>loginForm
 );
+parcelHelpers.export(exports, "forgotPasswordForm", ()=>forgotPasswordForm
+);
+parcelHelpers.export(exports, "editUsernameForm", ()=>editUsernameForm
+);
+parcelHelpers.export(exports, "usernameForm", ()=>usernameForm
+);
+parcelHelpers.export(exports, "editEmailForm", ()=>editEmailForm
+);
 parcelHelpers.export(exports, "formLabel", ()=>formLabel
 );
 parcelHelpers.export(exports, "emailForm", ()=>emailForm
@@ -637,6 +645,8 @@ parcelHelpers.export(exports, "passwordForm", ()=>passwordForm
 parcelHelpers.export(exports, "passwordConfirmationForm", ()=>passwordConfirmationForm
 );
 parcelHelpers.export(exports, "emailInput", ()=>emailInput
+);
+parcelHelpers.export(exports, "usernameInput", ()=>usernameInput
 );
 parcelHelpers.export(exports, "passwordInput", ()=>passwordInput
 );
@@ -648,15 +658,18 @@ parcelHelpers.export(exports, "submitButton", ()=>submitButton
 );
 const signupForm = document.getElementById("signup-form");
 const loginForm = document.getElementById("login-form");
+const forgotPasswordForm = document.getElementById("forgot-password-form");
 // const forgotPasswordForm;
-// const editUsernameForm;
+const editUsernameForm = document.getElementById("edit-username-form");
 // const editPasswordForm;
-// const editEmailForm;
+const editEmailForm = document.getElementById("edit-email-form");
 const formLabel = document.querySelector(".form-label-container p");
 const emailForm = document.getElementById("email-form-element");
+const usernameForm = document.getElementById("username-form-element");
 const passwordForm = document.getElementById("password-form-element");
 const passwordConfirmationForm = document.getElementById("passwordConfirmation-form-element");
 const emailInput = document.getElementById("email");
+const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const passwordConfirmationInput = document.getElementById("passwordConfirmation");
 const errorContainer = document.getElementById("error-container");

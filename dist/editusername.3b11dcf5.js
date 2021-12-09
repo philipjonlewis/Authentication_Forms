@@ -140,12 +140,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"2KDQ6":[function(require,module,exports) {
+})({"5kY4l":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "4a236f9275d0a351";
-module.bundle.HMR_BUNDLE_ID = "5df679701fb81f3f";
+module.bundle.HMR_BUNDLE_ID = "bd378a7c3b11dcf5";
 "use strict";
 function _createForOfIteratorHelper(o, allowArrayLike) {
     var it;
@@ -458,32 +458,32 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"9lXyn":[function(require,module,exports) {
-var _emailhandlerJs = require("./handlers/emailhandler.js");
+},{}],"346Db":[function(require,module,exports) {
+var _usernameHandlerJs = require("./handlers/usernameHandler.js");
 var _passwordHandlerJs = require("./handlers/passwordHandler.js");
 var _toggleShowPasswordHandler = require("./handlers/toggleShowPasswordHandler");
 var _passwordConfirmationHandlerJs = require("./handlers/passwordConfirmationHandler.js");
 var _buttonHandlerJs = require("./handlers/buttonHandler.js");
 var _domSelectorsJs = require("./selectors/domSelectors.js");
 const formInputState = {
-    email: false,
+    username: false,
     password: false,
     passwordConfirmation: false
 };
 // Toggles show password
 _toggleShowPasswordHandler.toggleShowPasswordHandler(document.querySelectorAll(".password-field-element"));
 // Gets email from local storage and handles input
-if (localStorage.getItem("email").length >= 1) {
-    _domSelectorsJs.emailInput.value = localStorage.getItem("email");
-    _emailhandlerJs.emailInputHandler(_domSelectorsJs.emailInput, _domSelectorsJs.emailForm, formInputState);
+if (localStorage.getItem("username") && localStorage.getItem("username").length >= 1) {
+    _domSelectorsJs.usernameInput.value = localStorage.getItem("username");
+    _usernameHandlerJs.usernameInputHandler(_domSelectorsJs.usernameInput, _domSelectorsJs.usernameForm, formInputState);
 }
 // Sets email to local storage and handles input
-const emailStateHandler = (e)=>{
-    localStorage.setItem("email", e.target.value);
-    _emailhandlerJs.emailInputHandler(e.target, _domSelectorsJs.emailForm, formInputState);
+const usernameStateHandler = (e)=>{
+    localStorage.setItem("username", e.target.value);
+    _usernameHandlerJs.usernameInputHandler(e.target, _domSelectorsJs.usernameForm, formInputState);
 };
-// Email input listener
-_domSelectorsJs.emailInput.addEventListener("input", emailStateHandler);
+// username input listener
+_domSelectorsJs.usernameInput.addEventListener("input", usernameStateHandler);
 // Password input listener
 _domSelectorsJs.passwordInput.addEventListener("input", _passwordHandlerJs.passwordStatehandler({
     form: _domSelectorsJs.passwordForm,
@@ -499,7 +499,7 @@ _domSelectorsJs.passwordConfirmationInput.addEventListener("input", _passwordHan
     callback: _passwordConfirmationHandlerJs.passwordConfirmationHandler(_domSelectorsJs.passwordInput, _domSelectorsJs.passwordConfirmationInput, _domSelectorsJs.errorContainer)
 }));
 // Button event listener
-_domSelectorsJs.signupForm.addEventListener("input", _buttonHandlerJs.buttonHandler({
+_domSelectorsJs.editUsernameForm.addEventListener("input", _buttonHandlerJs.buttonHandler({
     formInputState,
     formLabel: _domSelectorsJs.formLabel,
     submitButton: _domSelectorsJs.submitButton,
@@ -507,24 +507,24 @@ _domSelectorsJs.signupForm.addEventListener("input", _buttonHandlerJs.buttonHand
     passwordConfirmationInput: _domSelectorsJs.passwordConfirmationInput
 }));
 
-},{"./handlers/emailhandler.js":"2QacT","./handlers/passwordHandler.js":"hE5fk","./selectors/domSelectors.js":"5UQ20","./handlers/toggleShowPasswordHandler":"Sz8RH","./handlers/passwordConfirmationHandler.js":"ktRcw","./handlers/buttonHandler.js":"3odHj"}],"2QacT":[function(require,module,exports) {
+},{"./handlers/usernameHandler.js":"lXRza","./handlers/passwordHandler.js":"hE5fk","./handlers/toggleShowPasswordHandler":"Sz8RH","./handlers/passwordConfirmationHandler.js":"ktRcw","./handlers/buttonHandler.js":"3odHj","./selectors/domSelectors.js":"5UQ20"}],"lXRza":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "emailInputHandler", ()=>emailInputHandler
+parcelHelpers.export(exports, "usernameInputHandler", ()=>usernameInputHandler
 );
-const emailInputHandler = (field, emailForm, formInputState)=>{
-    if (field.validity.valid) {
-        emailForm.children[0].style = "color: rgb(52,199,89)";
-        emailForm.children[2].innerText = "Email is in the correct format";
-        formInputState.email = true;
+const usernameInputHandler = (field, usernameForm, formInputState)=>{
+    if (field.value.length >= 8 && field.value.length <= 16) {
+        usernameForm.children[0].style = "color: rgb(52,199,89)";
+        usernameForm.children[2].innerText = "Username is in the correct format";
+        formInputState.username = true;
     } else if (field.value.length == 0) {
-        emailForm.children[0].style = "color:rgb(0,122,255)";
-        emailForm.children[2].innerText = "example format : johndoe@email.com";
-        formInputState.email = false;
+        usernameForm.children[0].style = "color:rgb(0,122,255)";
+        usernameForm.children[2].innerText = "example format : johndoe@email.com";
+        formInputState.username = false;
     } else {
-        emailForm.children[0].style = "color:rgb(255,59,48)";
-        emailForm.children[2].innerText = field.validationMessage;
-        formInputState.email = false;
+        usernameForm.children[0].style = "color:rgb(255,59,48)";
+        usernameForm.children[2].innerText = field.validationMessage;
+        formInputState.username = false;
     }
 };
 
@@ -582,60 +582,6 @@ const passwordStatehandler = (args)=>{
         if (callback) callback();
     };
 };
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"5UQ20":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "signupForm", ()=>signupForm
-);
-parcelHelpers.export(exports, "loginForm", ()=>loginForm
-);
-parcelHelpers.export(exports, "forgotPasswordForm", ()=>forgotPasswordForm
-);
-parcelHelpers.export(exports, "editUsernameForm", ()=>editUsernameForm
-);
-parcelHelpers.export(exports, "usernameForm", ()=>usernameForm
-);
-parcelHelpers.export(exports, "editEmailForm", ()=>editEmailForm
-);
-parcelHelpers.export(exports, "formLabel", ()=>formLabel
-);
-parcelHelpers.export(exports, "emailForm", ()=>emailForm
-);
-parcelHelpers.export(exports, "passwordForm", ()=>passwordForm
-);
-parcelHelpers.export(exports, "passwordConfirmationForm", ()=>passwordConfirmationForm
-);
-parcelHelpers.export(exports, "emailInput", ()=>emailInput
-);
-parcelHelpers.export(exports, "usernameInput", ()=>usernameInput
-);
-parcelHelpers.export(exports, "passwordInput", ()=>passwordInput
-);
-parcelHelpers.export(exports, "passwordConfirmationInput", ()=>passwordConfirmationInput
-);
-parcelHelpers.export(exports, "errorContainer", ()=>errorContainer
-);
-parcelHelpers.export(exports, "submitButton", ()=>submitButton
-);
-const signupForm = document.getElementById("signup-form");
-const loginForm = document.getElementById("login-form");
-const forgotPasswordForm = document.getElementById("forgot-password-form");
-// const forgotPasswordForm;
-const editUsernameForm = document.getElementById("edit-username-form");
-// const editPasswordForm;
-const editEmailForm = document.getElementById("edit-email-form");
-const formLabel = document.querySelector(".form-label-container p");
-const emailForm = document.getElementById("email-form-element");
-const usernameForm = document.getElementById("username-form-element");
-const passwordForm = document.getElementById("password-form-element");
-const passwordConfirmationForm = document.getElementById("passwordConfirmation-form-element");
-const emailInput = document.getElementById("email");
-const usernameInput = document.getElementById("username");
-const passwordInput = document.getElementById("password");
-const passwordConfirmationInput = document.getElementById("passwordConfirmation");
-const errorContainer = document.getElementById("error-container");
-const submitButton = document.querySelector("button");
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"Sz8RH":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -699,6 +645,60 @@ const buttonHandler = (args)=>{
     };
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["2KDQ6","9lXyn"], "9lXyn", "parcelRequiread8c")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"5UQ20":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "signupForm", ()=>signupForm
+);
+parcelHelpers.export(exports, "loginForm", ()=>loginForm
+);
+parcelHelpers.export(exports, "forgotPasswordForm", ()=>forgotPasswordForm
+);
+parcelHelpers.export(exports, "editUsernameForm", ()=>editUsernameForm
+);
+parcelHelpers.export(exports, "usernameForm", ()=>usernameForm
+);
+parcelHelpers.export(exports, "editEmailForm", ()=>editEmailForm
+);
+parcelHelpers.export(exports, "formLabel", ()=>formLabel
+);
+parcelHelpers.export(exports, "emailForm", ()=>emailForm
+);
+parcelHelpers.export(exports, "passwordForm", ()=>passwordForm
+);
+parcelHelpers.export(exports, "passwordConfirmationForm", ()=>passwordConfirmationForm
+);
+parcelHelpers.export(exports, "emailInput", ()=>emailInput
+);
+parcelHelpers.export(exports, "usernameInput", ()=>usernameInput
+);
+parcelHelpers.export(exports, "passwordInput", ()=>passwordInput
+);
+parcelHelpers.export(exports, "passwordConfirmationInput", ()=>passwordConfirmationInput
+);
+parcelHelpers.export(exports, "errorContainer", ()=>errorContainer
+);
+parcelHelpers.export(exports, "submitButton", ()=>submitButton
+);
+const signupForm = document.getElementById("signup-form");
+const loginForm = document.getElementById("login-form");
+const forgotPasswordForm = document.getElementById("forgot-password-form");
+// const forgotPasswordForm;
+const editUsernameForm = document.getElementById("edit-username-form");
+// const editPasswordForm;
+const editEmailForm = document.getElementById("edit-email-form");
+const formLabel = document.querySelector(".form-label-container p");
+const emailForm = document.getElementById("email-form-element");
+const usernameForm = document.getElementById("username-form-element");
+const passwordForm = document.getElementById("password-form-element");
+const passwordConfirmationForm = document.getElementById("passwordConfirmation-form-element");
+const emailInput = document.getElementById("email");
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+const passwordConfirmationInput = document.getElementById("passwordConfirmation");
+const errorContainer = document.getElementById("error-container");
+const submitButton = document.querySelector("button");
 
-//# sourceMappingURL=signup.1fb81f3f.js.map
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["5kY4l","346Db"], "346Db", "parcelRequiread8c")
+
+//# sourceMappingURL=editusername.3b11dcf5.js.map
