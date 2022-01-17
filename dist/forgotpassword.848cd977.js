@@ -140,12 +140,12 @@
       this[globalName] = mainExports;
     }
   }
-})({"8xmLP":[function(require,module,exports) {
+})({"7eoDw":[function(require,module,exports) {
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "4a236f9275d0a351";
-module.bundle.HMR_BUNDLE_ID = "b0dd1cfeeae16cc8";
+module.bundle.HMR_BUNDLE_ID = "1e4029fe848cd977";
 "use strict";
 function _createForOfIteratorHelper(o, allowArrayLike) {
     var it;
@@ -458,8 +458,173 @@ function hmrAcceptRun(bundle, id) {
     acceptedAssets[id] = true;
 }
 
-},{}],"gMhD1":[function(require,module,exports) {
+},{}],"2bUnB":[function(require,module,exports) {
+var _emailhandlerJs = require("./handlers/emailhandler.js");
+var _buttonHandlerJs = require("./handlers/buttonHandler.js");
+var _domSelectorsJs = require("./selectors/domSelectors.js");
+const formInputState = {
+    email: false
+};
+// Gets email from local storage and handles input
+if (localStorage.getItem("email").length >= 1) {
+    _domSelectorsJs.emailInput.value = localStorage.getItem("email");
+    _emailhandlerJs.emailInputHandler(_domSelectorsJs.emailInput, _domSelectorsJs.emailForm, formInputState);
+}
+// Sets email to local storage and handles input
+const emailStateHandler = (e)=>{
+    localStorage.setItem("email", e.target.value);
+    _emailhandlerJs.emailInputHandler(e.target, _domSelectorsJs.emailForm, formInputState);
+};
+// Email input listener
+_domSelectorsJs.emailInput.addEventListener("input", emailStateHandler);
+// Button event listener
+_domSelectorsJs.forgotPasswordForm.addEventListener("input", _buttonHandlerJs.buttonHandler({
+    formInputState,
+    formLabel: _domSelectorsJs.formLabel,
+    submitButton: _domSelectorsJs.submitButton
+}));
 
-},{}]},["8xmLP","gMhD1"], "gMhD1", "parcelRequiread8c")
+},{"./handlers/emailhandler.js":"2QacT","./handlers/buttonHandler.js":"3odHj","./selectors/domSelectors.js":"5UQ20"}],"2QacT":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "emailInputHandler", ()=>emailInputHandler
+);
+const emailInputHandler = (field, emailForm, formInputState)=>{
+    if (field.validity.valid) {
+        emailForm.children[0].style = "color: rgb(52,199,89)";
+        emailForm.children[2].innerText = "Email is in the correct format";
+        formInputState.email = true;
+    } else if (field.value.length == 0) {
+        emailForm.children[0].style = "color:rgb(0,122,255)";
+        emailForm.children[2].innerText = "example format : johndoe@email.com";
+        formInputState.email = false;
+    } else {
+        emailForm.children[0].style = "color:rgb(255,59,48)";
+        emailForm.children[2].innerText = field.validationMessage;
+        formInputState.email = false;
+    }
+};
 
-//# sourceMappingURL=editpassword.eae16cc8.js.map
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"ciiiV":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"3odHj":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "buttonHandler", ()=>buttonHandler
+);
+const buttonHandler = (args)=>{
+    const { formInputState , formLabel , submitButton , passwordInput , passwordConfirmationInput ,  } = args;
+    return (e)=>{
+        const inputCondition = Object.entries(formInputState).flat().filter((x)=>typeof x == "boolean"
+        ).every((y)=>y === true
+        );
+        if (passwordInput && passwordConfirmationInput) {
+            if (inputCondition && passwordInput.value == passwordConfirmationInput.value) {
+                formLabel.style = "color: rgb(52,199,89)";
+                submitButton.disabled = false;
+            } else {
+                formLabel.style = "color:rgb(0,122,255)";
+                submitButton.disabled = true;
+            }
+        } else if (inputCondition) {
+            formLabel.style = "color: rgb(52,199,89)";
+            submitButton.disabled = false;
+        } else {
+            formLabel.style = "color:rgb(0,122,255)";
+            submitButton.disabled = true;
+        }
+    };
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"5UQ20":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "signupForm", ()=>signupForm
+);
+parcelHelpers.export(exports, "loginForm", ()=>loginForm
+);
+parcelHelpers.export(exports, "forgotPasswordForm", ()=>forgotPasswordForm
+);
+parcelHelpers.export(exports, "editUsernameForm", ()=>editUsernameForm
+);
+parcelHelpers.export(exports, "editPasswordForm", ()=>editPasswordForm
+);
+parcelHelpers.export(exports, "currentPasswordForm", ()=>currentPasswordForm
+);
+parcelHelpers.export(exports, "usernameForm", ()=>usernameForm
+);
+parcelHelpers.export(exports, "editEmailForm", ()=>editEmailForm
+);
+parcelHelpers.export(exports, "formLabel", ()=>formLabel
+);
+parcelHelpers.export(exports, "emailForm", ()=>emailForm
+);
+parcelHelpers.export(exports, "passwordForm", ()=>passwordForm
+);
+parcelHelpers.export(exports, "passwordConfirmationForm", ()=>passwordConfirmationForm
+);
+parcelHelpers.export(exports, "emailInput", ()=>emailInput
+);
+parcelHelpers.export(exports, "currentPasswordInput", ()=>currentPasswordInput
+);
+parcelHelpers.export(exports, "usernameInput", ()=>usernameInput
+);
+parcelHelpers.export(exports, "passwordInput", ()=>passwordInput
+);
+parcelHelpers.export(exports, "passwordConfirmationInput", ()=>passwordConfirmationInput
+);
+parcelHelpers.export(exports, "errorContainer", ()=>errorContainer
+);
+parcelHelpers.export(exports, "submitButton", ()=>submitButton
+);
+const signupForm = document.getElementById("signup-form");
+const loginForm = document.getElementById("login-form");
+const forgotPasswordForm = document.getElementById("forgot-password-form");
+const editUsernameForm = document.getElementById("edit-username-form");
+const editEmailForm = document.getElementById("edit-email-form");
+const editPasswordForm = document.getElementById("edit-password-form");
+const formLabel = document.querySelector(".form-label-container p");
+const emailForm = document.getElementById("email-form-element");
+const usernameForm = document.getElementById("username-form-element");
+const currentPasswordForm = document.getElementById("current-password-form-element");
+const passwordForm = document.getElementById("password-form-element");
+const passwordConfirmationForm = document.getElementById("passwordConfirmation-form-element");
+const emailInput = document.getElementById("email");
+const usernameInput = document.getElementById("username");
+const currentPasswordInput = document.getElementById("currentPassword");
+const passwordInput = document.getElementById("password");
+const passwordConfirmationInput = document.getElementById("passwordConfirmation");
+const errorContainer = document.getElementById("error-container");
+const submitButton = document.querySelector("button");
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["7eoDw","2bUnB"], "2bUnB", "parcelRequiread8c")
+
+//# sourceMappingURL=forgotpassword.848cd977.js.map

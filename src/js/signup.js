@@ -1,10 +1,7 @@
 import { emailInputHandler } from "./handlers/emailhandler.js";
 import { passwordStatehandler } from "./handlers/passwordHandler.js";
-
 import { toggleShowPasswordHandler } from "./handlers/toggleShowPasswordHandler";
-
 import { passwordConfirmationHandler } from "./handlers/passwordConfirmationHandler.js";
-
 import { buttonHandler } from "./handlers/buttonHandler.js";
 
 import {

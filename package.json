@@ -5,7 +5,11 @@
   "source": [
     "src/index.html",
     "src/signup.html",
-    "src/login.html"
+    "src/login.html",
+    "src/forgotpassword.html",
+    "src/editusername.html",
+    "src/editpassword.html",
+    "src/editemail.html"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
