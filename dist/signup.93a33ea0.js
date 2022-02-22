@@ -520,6 +520,7 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"kcMzV":[function(require,module,exports) {
 var _emailhandlerJs = require("./handlers/emailhandler.js");
+var _emailLocalStorageHandlerJs = require("./handlers/emailLocalStorageHandler.js");
 var _passwordHandlerJs = require("./handlers/passwordHandler.js");
 var _toggleShowPasswordHandler = require("./handlers/toggleShowPasswordHandler");
 var _passwordConfirmationHandlerJs = require("./handlers/passwordConfirmationHandler.js");
@@ -530,22 +531,15 @@ const formInputState = {
     password: false,
     passwordConfirmation: false
 };
-console.log();
-localStorage.setItem("email", _domSelectorsJs.emailInput.value);
 // Toggles show password
 _toggleShowPasswordHandler.toggleShowPasswordHandler(document.querySelectorAll(".password-field-element"));
+// Email input listener
+_domSelectorsJs.emailInput.addEventListener("input", _emailLocalStorageHandlerJs.emailStateHandler(_domSelectorsJs.emailForm, formInputState));
 // Gets email from local storage and handles input
 if (localStorage.getItem("email").length >= 1) {
     _domSelectorsJs.emailInput.value = localStorage.getItem("email");
     _emailhandlerJs.emailInputHandler(_domSelectorsJs.emailInput, _domSelectorsJs.emailForm, formInputState);
 }
-// Sets email to local storage and handles input
-const emailStateHandler = (e)=>{
-    localStorage.setItem("email", e.target.value);
-    _emailhandlerJs.emailInputHandler(e.target, _domSelectorsJs.emailForm, formInputState);
-};
-// Email input listener
-_domSelectorsJs.emailInput.addEventListener("input", emailStateHandler);
 // Password input listener
 _domSelectorsJs.passwordInput.addEventListener("input", _passwordHandlerJs.passwordStatehandler({
     form: _domSelectorsJs.passwordForm,
@@ -569,7 +563,7 @@ _domSelectorsJs.signupForm.addEventListener("input", _buttonHandlerJs.buttonHand
     passwordConfirmationInput: _domSelectorsJs.passwordConfirmationInput
 }));
 
-},{"./handlers/emailhandler.js":"iOE2s","./handlers/passwordHandler.js":"3SzWt","./handlers/toggleShowPasswordHandler":"kQgw3","./handlers/passwordConfirmationHandler.js":"lfDbW","./handlers/buttonHandler.js":"f4jrY","./selectors/domSelectors.js":"8HBzT"}],"iOE2s":[function(require,module,exports) {
+},{"./handlers/emailhandler.js":"iOE2s","./handlers/passwordHandler.js":"3SzWt","./handlers/toggleShowPasswordHandler":"kQgw3","./handlers/passwordConfirmationHandler.js":"lfDbW","./handlers/buttonHandler.js":"f4jrY","./selectors/domSelectors.js":"8HBzT","./handlers/emailLocalStorageHandler.js":"kY2Ke"}],"iOE2s":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "emailInputHandler", ()=>emailInputHandler
@@ -768,6 +762,19 @@ const passwordConfirmationInput = document.getElementById("passwordConfirmation"
 const errorContainer = document.getElementById("error-container");
 const submitButton = document.querySelector("button");
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["jZLYf","kcMzV"], "kcMzV", "parcelRequiread8c")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kY2Ke":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "emailStateHandler", ()=>emailStateHandler
+);
+var _emailhandler = require("./emailhandler");
+const emailStateHandler = (emailForm, formInputState)=>{
+    return (e)=>{
+        localStorage.setItem("email", e.target.value);
+        _emailhandler.emailInputHandler(e.target, emailForm, formInputState);
+    };
+};
+
+},{"./emailhandler":"iOE2s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["jZLYf","kcMzV"], "kcMzV", "parcelRequiread8c")
 
 //# sourceMappingURL=signup.93a33ea0.js.map

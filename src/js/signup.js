@@ -1,7 +1,13 @@
 import { emailInputHandler } from "./handlers/emailhandler.js";
+
+import { emailStateHandler } from "./handlers/emailLocalStorageHandler.js";
+
 import { passwordStatehandler } from "./handlers/passwordHandler.js";
+
 import { toggleShowPasswordHandler } from "./handlers/toggleShowPasswordHandler";
+
 import { passwordConfirmationHandler } from "./handlers/passwordConfirmationHandler.js";
+
 import { buttonHandler } from "./handlers/buttonHandler.js";
 
 import {
@@ -22,26 +28,20 @@ const formInputState = {
   password: false,
   passwordConfirmation: false,
 };
-console.log()
 
-localStorage.setItem("email", emailInput.value);
 
 // Toggles show password
 toggleShowPasswordHandler(document.querySelectorAll(".password-field-element"));
+
+
+// Email input listener
+emailInput.addEventListener("input", emailStateHandler(emailForm,formInputState));
+
 // Gets email from local storage and handles input
 if (localStorage.getItem("email").length >= 1) {
   emailInput.value = localStorage.getItem("email");
   emailInputHandler(emailInput, emailForm, formInputState);
 }
-
-// Sets email to local storage and handles input
-const emailStateHandler = (e) => {
-  localStorage.setItem("email", e.target.value);
-  emailInputHandler(e.target, emailForm, formInputState);
-};
-
-// Email input listener
-emailInput.addEventListener("input", emailStateHandler);
 
 // Password input listener
 passwordInput.addEventListener(

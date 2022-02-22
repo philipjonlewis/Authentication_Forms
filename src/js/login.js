@@ -1,5 +1,7 @@
 import { emailInputHandler } from "./handlers/emailhandler.js";
 
+import { emailStateHandler } from "./handlers/emailLocalStorageHandler.js";
+
 import { passwordStatehandler } from "./handlers/passwordHandler.js";
 
 import { toggleShowPasswordHandler } from "./handlers/toggleShowPasswordHandler";
@@ -30,14 +32,8 @@ if (localStorage.getItem("email").length >= 1) {
   emailInputHandler(emailInput, emailForm, formInputState);
 }
 
-// Sets email to local storage and handles input
-const emailStateHandler = (e) => {
-  localStorage.setItem("email", e.target.value);
-  emailInputHandler(e.target, emailForm, formInputState);
-};
-
 // Email input listener
-emailInput.addEventListener("input", emailStateHandler);
+emailInput.addEventListener("input", emailStateHandler(emailForm,formInputState));
 
 // Password input listener
 passwordInput.addEventListener(
