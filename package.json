@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/philipjonlewis/Authentication_Forms#readme",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.1",
-    "parcel": "^2.0.1"
+    "@parcel/transformer-sass": "^2.3.2",
+    "parcel": "^2.3.2"
   }
 }

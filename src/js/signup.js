@@ -22,10 +22,12 @@ const formInputState = {
   password: false,
   passwordConfirmation: false,
 };
+console.log()
+
+localStorage.setItem("email", emailInput.value);
 
 // Toggles show password
 toggleShowPasswordHandler(document.querySelectorAll(".password-field-element"));
-
 // Gets email from local storage and handles input
 if (localStorage.getItem("email").length >= 1) {
   emailInput.value = localStorage.getItem("email");
